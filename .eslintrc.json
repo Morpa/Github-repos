@@ -13,7 +13,8 @@
   ],
   "globals": {
     "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
+    "SharedArrayBuffer": "readonly",
+    "React": "writable"
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -31,6 +32,8 @@
     "eslint-plugin-import-helpers"
   ],
   "rules": {
+    "no-shadow": "off",
+    "react/react-in-jsx-scope": "off",
     "prettier/prettier": "error",
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-props-no-spreading": "off",
@@ -43,12 +46,7 @@
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
     "import/prefer-default-export": "off",
     "no-underscore-dangle": "off",
-    "@typescript-eslint/explicit-function-return-type": [
-      "error",
-      {
-        "allowExpressions": true
-      }
-    ],
+    "@typescript-eslint/explicit-function-return-type": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
