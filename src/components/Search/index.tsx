@@ -1,8 +1,7 @@
+import Input from '@components/shared/Input';
+import Select from '@components/shared/Select';
+import LANGUAGES from '@constants/languages.constant';
 import React from 'react';
-
-import LANGUAGES from '../../constants/languages.constant';
-import Input from '../shared/Input';
-import Select from '../shared/Select';
 
 interface SearchProps {
   language: string;

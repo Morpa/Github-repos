@@ -1,25 +1,38 @@
+import RepoList from '@components/RepoList';
+import Search from '@components/Search';
+import { getRandomWord } from '@helpers/randomWorldHelper';
+import { searchRepos } from '@services/githubService';
+import { GetServerSideProps } from 'next';
 import React, { useState, useCallback } from 'react';
 
-import Search from '../components/Search';
-import { searchRepos } from '../services/githubService';
+interface Props {
+  searchTerm: string;
+  reposData: [];
+}
 
-const Index: React.FC = () => {
-  const [searchText, setSeachText] = useState('');
+const Index: React.FC<Props> = ({ searchTerm, reposData }) => {
+  const [searchText, setSeachText] = useState(searchTerm);
   const [language, setLanguage] = useState('');
-  const [repos, setRepos] = useState([]);
+  const [repos, setRepos] = useState(reposData);
   const [loading, setLoading] = useState(false);
 
   const loadRepos = useCallback(async (searchText, language) => {
     setLoading(true);
     const response = await searchRepos(searchText, language);
-    setLoading(false);
-    setRepos(response.data.items);
+
+    if (response && response.data) {
+      setLoading(false);
+      setRepos(response.data.items);
+    }
   }, []);
 
   const handleSearchTextChange = useCallback(
     text => {
       setSeachText(text);
-      loadRepos(text, language);
+
+      if (text) {
+        loadRepos(text, language);
+      }
     },
     [language, loadRepos],
   );
@@ -40,9 +53,20 @@ const Index: React.FC = () => {
         handleSearchTextChange={handleSearchTextChange}
         handleLanguageChange={handleLanguageChange}
       />
-      {loading ? 'Loading...' : <div>{JSON.stringify(repos, null, 2)}</div>}
+      <RepoList loading={loading} repositories={repos} />
     </div>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const searchTerm = getRandomWord();
+  const response = await searchRepos(searchTerm);
+  return {
+    props: {
+      searchTerm,
+      reposData: response.data.items,
+    },
+  };
 };
 
 export default Index;

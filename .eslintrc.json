@@ -33,7 +33,9 @@
   ],
   "rules": {
     "no-shadow": "off",
+    "jsx-a11y/anchor-is-valid": "off",
     "react/react-in-jsx-scope": "off",
+    "consistent-return": "off",
     "prettier/prettier": "error",
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-props-no-spreading": "off",
