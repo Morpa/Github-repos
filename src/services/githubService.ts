@@ -26,11 +26,11 @@ function searchRepos(searchText: string, language?: string) {
   return axiosGetCancellable(`api/search?q=${query}&sort=stars&order=desc`);
 }
 
-function getRepo(id: string) {
+function getRepo(id: any) {
   return axios.get(`repositories/${id}`, axiosConfig);
 }
 
-function getProfile(username: string) {
+function getProfile(username: any) {
   return axios.get(`users/${username}`, axiosConfig);
 }
 
