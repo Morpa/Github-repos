@@ -4,11 +4,7 @@ import React from 'react';
 import styles from './styles.module.scss';
 
 interface UserProps {
-  user: {
-    avatar?: string;
-    avatar_url?: string;
-    login?: string;
-  };
+  user: any;
 }
 
 const UserAvatar: React.FC<UserProps> = ({ user }) => {
