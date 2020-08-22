@@ -13,7 +13,7 @@ export interface RepoProps {
     stargazers_count?: string;
     forks_count?: string;
     language?: string;
-    owner: {
+    owner?: {
       avatar: string;
       avatar_url: string;
       login: string;

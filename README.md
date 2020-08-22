@@ -53,6 +53,7 @@ The following tools were used in this project:
 - [x] TypeScript
 - [x] Bulma
 - [x] TypeScript
+- [x] Sass
 
 ## :white_check_mark: Requirements
 
