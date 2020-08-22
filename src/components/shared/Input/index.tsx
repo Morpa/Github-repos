@@ -10,11 +10,21 @@ const Input: React.FC<InputProps> = ({
   value,
   onChange,
   placeholder,
+  className,
 }) => {
+  const textInputClass = className ? `${className} field` : 'field';
+
   return (
-    <div>
-      {label}
-      <input value={value} onChange={onChange} placeholder={placeholder} />
+    <div className={textInputClass}>
+      <div className="control">
+        <label className="label">{label}</label>
+        <input
+          className="input is-primary"
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+        />
+      </div>
     </div>
   );
 };

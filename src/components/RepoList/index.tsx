@@ -1,6 +1,8 @@
 import RepoItem from '@components/RepoItem';
 import React from 'react';
 
+import styles from './styles.module.scss';
+
 export interface RepoProps {
   id: string;
   name: string;
@@ -15,15 +17,17 @@ interface RepositoriesProps {
 
 const RepoList: React.FC<RepositoriesProps> = ({ repositories, loading }) => {
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <img src="/image/loader.gif" className={styles.loader} alt="Loading" />
+    );
   }
 
   if (!repositories || repositories.length === 0) {
-    return <span>No repositories found.</span>;
+    return <span className={styles.message}>No repositories found.</span>;
   }
 
   return (
-    <div>
+    <div className={styles.repoList}>
       {repositories.map(repository => (
         <RepoItem key={repository.id} repo={repository} />
       ))}

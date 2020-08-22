@@ -5,6 +5,8 @@ import { searchRepos } from '@services/githubService';
 import { GetServerSideProps } from 'next';
 import React, { useState, useCallback } from 'react';
 
+import styles from './styles.module.scss';
+
 interface Props {
   searchTerm: string;
   reposData: [];
@@ -46,7 +48,8 @@ const Index: React.FC<Props> = ({ searchTerm, reposData }) => {
   );
 
   return (
-    <div>
+    <div className={styles.container}>
+      <img className={styles.logo} src="/image/study.svg" alt="Logo" />
       <Search
         searchText={searchText}
         language={language}

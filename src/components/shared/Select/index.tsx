@@ -10,17 +10,29 @@ interface Options {
   value: string;
 }
 
-const Select: React.FC<SelectProps> = ({ Label, value, onChange, options }) => {
+const Select: React.FC<SelectProps> = ({
+  Label,
+  value,
+  onChange,
+  options,
+  className,
+}) => {
+  const selectClass = className ? `${className} field` : 'field';
+
   return (
-    <div>
-      {Label}
-      <select value={value} onChange={onChange}>
-        {options.map(option => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
+    <div className={selectClass}>
+      <div className="control">
+        <label className="label">{Label}</label>
+        <div className="select is-primary">
+          <select value={value} onChange={onChange}>
+            {options.map(option => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
     </div>
   );
 };
