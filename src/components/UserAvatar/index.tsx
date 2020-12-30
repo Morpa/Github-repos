@@ -1,13 +1,16 @@
-import Link from 'next/link';
-import React from 'react';
+import Link from 'next/link'
 
-import styles from './styles.module.scss';
+import styles from './styles.module.scss'
 
-interface UserProps {
-  user: any;
+type UserProps = {
+  user: {
+    avatar: string
+    avatar_url: string
+    login: string
+  }
 }
 
-const UserAvatar: React.FC<UserProps> = ({ user }) => {
+const UserAvatar = ({ user }: UserProps) => {
   return (
     <div className={styles.user}>
       <figure className={`${styles.avatar} image`}>
@@ -19,7 +22,7 @@ const UserAvatar: React.FC<UserProps> = ({ user }) => {
         </Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default UserAvatar;
+export default UserAvatar

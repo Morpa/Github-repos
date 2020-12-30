@@ -1,13 +1,6 @@
 function getRandomWord() {
-  const words = [
-    'react',
-    'react-native',
-    'javascript',
-    'vue',
-    'angular',
-    'redux',
-  ];
-  return words[Math.floor(Math.random() * words.length)];
+  const words = ['react', 'react-native', 'javascript', 'vue', 'node', 'nextjs']
+  return words[Math.floor(Math.random() * words.length)]
 }
 
-export { getRandomWord };
+export { getRandomWord }

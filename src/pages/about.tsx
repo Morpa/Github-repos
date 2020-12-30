@@ -1,7 +1,5 @@
-import React from 'react';
+const About = () => {
+  return <div>About page</div>
+}
 
-const About: React.FC = () => {
-  return <div>About page</div>;
-};
-
-export default About;
+export default About

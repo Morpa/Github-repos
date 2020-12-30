@@ -1,38 +1,46 @@
-import RepoItem from '@components/RepoItem';
-import React from 'react';
+import RepoItem from 'components/RepoItem'
 
-import styles from './styles.module.scss';
+import styles from './styles.module.scss'
 
-export interface RepoProps {
-  id: string;
-  name: string;
-  description: string;
-  repos: object;
+export type RepoProps = {
+  repository: {
+    id: number
+    name: string
+    description: string
+    stargazers_count?: string
+    forks_count?: string
+    language?: string
+    owner?: {
+      avatar: string
+      avatar_url: string
+      login: string
+    }
+  }
 }
 
-interface RepositoriesProps {
-  loading: boolean;
-  repositories: RepoProps[];
+type RepoListProps = {
+  loading: boolean
+  repositories: RepoProps[]
 }
 
-const RepoList: React.FC<RepositoriesProps> = ({ repositories, loading }) => {
+const RepoList = ({ repositories, loading }: RepoListProps) => {
   if (loading) {
     return (
       <img src="/image/loader.gif" className={styles.loader} alt="Loading" />
-    );
+    )
   }
 
   if (!repositories || repositories.length === 0) {
-    return <span className={styles.message}>No repositories found.</span>;
+    return <span className={styles.message}>No repositories found.</span>
   }
 
   return (
     <div className={styles.repoList}>
-      {repositories.map(repository => (
-        <RepoItem key={repository.id} repo={repository} />
+      {repositories.map((repo, index) => (
+        <RepoItem key={`repository-${index}`} repository={repo} />
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default RepoList;
+export default RepoList

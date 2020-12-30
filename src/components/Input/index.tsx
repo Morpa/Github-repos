@@ -1,18 +1,18 @@
-import React, { InputHTMLAttributes } from 'react';
+import { InputHTMLAttributes } from 'react'
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  label: string;
-  placeholder: string;
-}
+type InputProps = {
+  label: string
+  placeholder: string
+} & InputHTMLAttributes<HTMLInputElement>
 
-const Input: React.FC<InputProps> = ({
+const Input = ({
   label,
   value,
   onChange,
   placeholder,
-  className,
-}) => {
-  const textInputClass = className ? `${className} field` : 'field';
+  className
+}: InputProps) => {
+  const textInputClass = className ? `${className} field` : 'field'
 
   return (
     <div className={textInputClass}>
@@ -26,7 +26,7 @@ const Input: React.FC<InputProps> = ({
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Input;
+export default Input

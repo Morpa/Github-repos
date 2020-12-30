@@ -1,8 +1,8 @@
-import Navbar from '@components/Navbar';
-import type { AppProps } from 'next/app';
-import Head from 'next/head';
+import Navbar from 'components/Navbar'
+import type { AppProps } from 'next/app'
+import Head from 'next/head'
 
-import '../scss/styles.scss';
+import 'scss/styles.scss'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       </div>
     </div>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp

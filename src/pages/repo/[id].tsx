@@ -1,22 +1,23 @@
-import Button from '@components/shared/Button';
-import UserAvatar from '@components/UserAvatar';
-import { getRepo } from '@services/githubService';
-import { GetServerSideProps } from 'next';
-import React from 'react';
+import { GetServerSideProps } from 'next'
 
-import styles from './styles.module.scss';
+import Button from 'components/Button'
+import UserAvatar from 'components/UserAvatar'
+import { getRepo } from 'services/githubService'
 
-interface RepoProps {
+import styles from './styles.module.scss'
+
+type RepoProps = {
   repo: {
-    name?: string;
-    owner?: string;
-    description?: string;
-    language?: string;
-    html_url?: string;
-  };
+    id: string
+    name?: string
+    owner?: string
+    description?: string
+    language?: string
+    html_url?: string
+  }
 }
 
-const Repo: React.FC<RepoProps> = ({ repo }) => {
+const Repo = ({ repo }: RepoProps) => {
   return (
     <div>
       <Button href="/" text="Back" />
@@ -36,14 +37,14 @@ const Repo: React.FC<RepoProps> = ({ repo }) => {
         external
       />
     </div>
-  );
-};
+  )
+}
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const response = await getRepo(query.id);
+  const response = await getRepo(query.id)
 
   return {
-    props: { repo: response.data },
-  };
-};
-export default Repo;
+    props: { repo: response.data }
+  }
+}
+export default Repo

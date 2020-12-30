@@ -1,23 +1,23 @@
-import React, { SelectHTMLAttributes } from 'react';
+import { SelectHTMLAttributes } from 'react'
 
-interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
-  Label: string;
-  options: Options[];
+type Options = {
+  label: string
+  value: string
 }
 
-interface Options {
-  label: string;
-  value: string;
-}
+type SelectProps = {
+  Label: string
+  options: Options[]
+} & SelectHTMLAttributes<HTMLSelectElement>
 
-const Select: React.FC<SelectProps> = ({
+const Select = ({
   Label,
   value,
   onChange,
   options,
-  className,
-}) => {
-  const selectClass = className ? `${className} field` : 'field';
+  className
+}: SelectProps) => {
+  const selectClass = className ? `${className} field` : 'field'
 
   return (
     <div className={selectClass}>
@@ -25,7 +25,7 @@ const Select: React.FC<SelectProps> = ({
         <label className="label">{Label}</label>
         <div className="select is-primary">
           <select value={value} onChange={onChange}>
-            {options.map(option => (
+            {options.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
               </option>
@@ -34,7 +34,7 @@ const Select: React.FC<SelectProps> = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Select;
+export default Select

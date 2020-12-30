@@ -1,24 +1,24 @@
-import Button from '@components/shared/Button';
-import { getProfile } from '@services/githubService';
-import { GetServerSideProps } from 'next';
-import React from 'react';
+import { GetServerSideProps } from 'next'
 
-import styles from './styles.module.scss';
+import Button from 'components/Button'
+import { getProfile } from 'services/githubService'
 
-interface ProfileProps {
+import styles from './styles.module.scss'
+
+type ProfileProps = {
   profile: {
-    name: string;
-    bio: string;
-    email: string;
-    blog: string;
-    followers: string;
-    following: string;
-    location: string;
-    html_url: string;
-  };
+    name: string
+    bio: string
+    email: string
+    blog: string
+    followers: string
+    following: string
+    location: string
+    html_url: string
+  }
 }
 
-const Profile: React.FC<ProfileProps> = ({ profile }) => {
+const Profile = ({ profile }: ProfileProps) => {
   return (
     <div>
       <Button href="/" text="Back" />
@@ -44,14 +44,14 @@ const Profile: React.FC<ProfileProps> = ({ profile }) => {
         external
       />
     </div>
-  );
-};
+  )
+}
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const response = await getProfile(query.id);
+  const response = await getProfile(query.id)
 
   return {
-    props: { profile: response.data },
-  };
-};
-export default Profile;
+    props: { profile: response.data }
+  }
+}
+export default Profile

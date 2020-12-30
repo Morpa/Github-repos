@@ -1,31 +1,30 @@
-import Link from 'next/link';
-import React from 'react';
+import Link from 'next/link'
 
-import styles from './styles.module.scss';
+import styles from './styles.module.scss'
 
-interface ButtonProps {
-  href?: string;
-  text?: string;
-  target?: string;
-  external?: boolean;
-  type?: string;
+type ButtonProps = {
+  href?: string
+  text?: string
+  target?: string
+  external?: boolean
+  type?: string
 }
 
-const Button: React.FC<ButtonProps> = ({
+const Button = ({
   href,
   text,
   type = 'primary',
   target,
-  external,
-}) => {
+  external
+}: ButtonProps) => {
   const types = {
     primary: 'is-primary',
     success: 'is-success',
     danger: 'is-danger',
     dark: 'is-dark',
-    light: 'is-light',
-  };
-  const buttonClass = `button ${types[type]}`;
+    light: 'is-light'
+  }
+  const buttonClass = `button ${types[type]}`
 
   if (external) {
     return (
@@ -34,7 +33,7 @@ const Button: React.FC<ButtonProps> = ({
           {text}
         </a>
       </div>
-    );
+    )
   }
 
   return (
@@ -45,7 +44,7 @@ const Button: React.FC<ButtonProps> = ({
         </a>
       </Link>
     </div>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button

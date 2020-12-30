@@ -1,27 +1,27 @@
-import axios from 'axios';
+import axios from 'axios'
 
 const cancelConfig = {
   request: null,
-  cancelToken: null,
-};
+  cancelToken: null
+}
 
 async function axiosGetCancellable(url: string) {
   if (cancelConfig.request) {
-    cancelConfig.request.cancel('canceled');
+    cancelConfig.request.cancel('canceled')
   }
 
-  cancelConfig.request = axios.CancelToken.source();
-  cancelConfig.cancelToken = cancelConfig.request.token;
-  Object.assign(cancelConfig);
+  cancelConfig.request = axios.CancelToken.source()
+  cancelConfig.cancelToken = cancelConfig.request.token
+  Object.assign(cancelConfig)
 
   try {
-    const response = await axios.get(url, cancelConfig);
-    return response;
+    const response = await axios.get(url, cancelConfig)
+    return response
   } catch (error) {
     if (error.message !== 'canceled') {
-      throw error;
+      throw error
     }
   }
 }
 
-export { axiosGetCancellable };
+export { axiosGetCancellable }
